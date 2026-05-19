@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Self-Worth Reset: A 2-Minute Check-In</title>
+  <meta name="description" content="A private 2-minute self-worth check-in to understand whether you are carrying approval-seeking, self-abandonment, inner critic pressure, or a mix. Instant results. No login." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://selfworthcheckin.com/" />
+
+  <style>
+    :root { --bg:#0b0c10; --card:#12131a; --text:#f3f4f6; --muted:#a7aab3; --line:#242634; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--text); }
+    .wrap { max-width:900px; margin:0 auto; padding:24px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,.25); }
+    h1 { font-size:clamp(28px,3vw,42px); line-height:1.1; margin:0 0 10px; }
+    h2 { margin:0 0 8px; }
+    p { color:var(--muted); line-height:1.55; margin:8px 0; }
+    .tiny { font-size:13px; color:var(--muted); }
+    .row { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    .btn { display:inline-block; padding:12px 16px; border-radius:12px; background:#fff; color:#0b0c10; text-decoration:none; font-weight:700; border:0; cursor:pointer; }
+    .btn.secondary { background:transparent; color:var(--text); border:1px solid var(--line); }
+    .q { padding:16px 0; border-top:1px solid var(--line); }
+    .q:first-of-type { border-top:0; padding-top:0; }
+    .q h3 { margin:0 0 10px; font-size:18px; }
+    .options { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
+    label.choice { display:block; cursor:pointer; }
+    label.choice input[type="radio"] { display:none; }
+    label.choice span { display:block; padding:10px; border:1px solid var(--line); border-radius:12px; text-align:center; user-select:none; transition:all .15s ease; }
+    label.choice input[type="radio"]:checked + span { outline:2px solid #fff; outline-offset:2px; border-radius:10px; }
+    .result { margin-top:16px; padding:16px; border-radius:16px; border:1px solid var(--line); background:rgba(255,255,255,.03); }
+    .bullets { margin:10px 0 0; padding-left:18px; color:var(--text); }
+    .bullets li { margin:6px 0; color:var(--text); }
+    .divider { height:1px; background:var(--line); margin:16px 0; }
+    .hidden { display:none; }
+    .sticky { position:sticky; top:0; background:linear-gradient(to bottom,rgba(11,12,16,.95),rgba(11,12,16,.70)); backdrop-filter:blur(10px); padding:12px 0; z-index:10; }
+    .progress { height:10px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden; border:1px solid var(--line); }
+    .bar { height:100%; width:0%; background:#fff; transition:width .2s ease; }
+    .footer { margin-top:18px; font-size:13px; color:var(--muted); }
+    .optin-form { margin-top:20px; background:#f6f6f6; border-radius:8px; padding:24px; max-width:520px; margin-left:auto; margin-right:auto; }
+    .optin-form h3 { margin:0 0 10px; font-size:28px; font-weight:400; color:#000; }
+    .optin-form p { color:#000; margin:0 0 16px; }
+    .optin-form input[type="email"] { width:100%; padding:12px; border-radius:4px; border:1px solid #ccc; font-size:16px; margin-bottom:12px; }
+    .optin-form button { width:100%; padding:12px; background:#000; color:#fff; border:none; border-radius:4px; font-weight:700; cursor:pointer; font-size:16px; }
+    .optin-form button:hover { background:#333; }
+    @media (max-width:680px) { .options { grid-template-columns:1fr 1fr; } .optin-form { padding:18px; } .optin-form h3 { font-size:22px; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="sticky">
+      <div class="row" style="justify-content:space-between;">
+        <div class="tiny">Private • No login • Instant result</div>
+        <div class="tiny"><span id="answered">0</span>/12 answered</div>
+      </div>
+      <div class="progress" aria-label="progress"><div class="bar" id="bar"></div></div>
+    </div>
+
+    <div class="card">
+      <h1>Self-Worth Reset: A 2-Minute Check-In</h1>
+      <p>This private check-in helps you notice whether your self-worth is being strained by <b>approval-seeking</b>, <b>self-abandonment</b>, <b>inner critic pressure</b>, or a mix.</p>
+      <p class="tiny">Not a diagnosis. Just a mirror. If you feel unsafe or overwhelmed, please reach out to a licensed professional or local emergency support.</p>
+      <div class="divider"></div>
+
+      <form id="quiz" autocomplete="off">
+        <div class="q"><h3>1) I worry people will pull away if I disappoint them.</h3><div class="options">
+          <label class="choice"><input type="radio" name="q1" value="0"><span>Never</span></label><label class="choice"><input type="radio" name="q1" value="1"><span>Sometimes</span></label><label class="choice"><input type="radio" name="q1" value="2"><span>Often</span></label><label class="choice"><input type="radio" name="q1" value="3"><span>Almost always</span></label>
+        </div></div>
+        <div class="q"><h3>2) I replay conversations wondering if I said the wrong thing.</h3><div class="options">
+          <label class="choice"><input type="radio" name="q2" value="0"><span>Never</span></label><label class="choice"><input type="radio" name="q2" value="1"><span>Sometimes</span></label><label class="choice"><input type="radio" name="q2" value="2"><span>Often</span></label><label class="choice"><input type="radio" name="q2" value="3"><span>Almost always</span></label>
+        </div></div>
+        <div class="q"><h3>3) I feel calmer when someone approves of me.</h3><div class="options">
+          <label class="choice"><input type="radio" name="q3" value="0"><span>Never</span></label><label class="choice"><input type="radio" name="q3" value="1"><span>Sometimes</span></label><label class="choice"><input type="radio" name="q3" value="2"><span>Often</span></label><label class="choice"><input type="radio" name="q3" value="3"><span>Almost always</span></label>
+        </div></div>
+        <div class="q"><h3>4) I over-explain myself so people won’t misunderstand me.</h3><div class="options">
+          <label class="choice"><input type="radio" name="q4" value="0"><span>Never</span></label><label class="choice"><input type="radio" name="q4" value="1"><span>Sometimes</span></label><label class="choice"><input type="radio" name="q4" value="2"><span>Often</span></label><label class="choice"><input type="radio" name="q4" value="3"><span>Almost always</span></label>
+        </div></div>
+
+        <div class="q"><h3>5) I say yes when my whole body wants to say no.</h3><div class="options">
+          <label class="choice"><input type="radio" name="q5" value="0"><span>Never</span></label><label class="choice"><input type="radio" name="q5" value="1"><span>Sometimes</span></label><label class="choice"><input type="radio" name="q5" value="2"><span>Often</span></label><label class="choice"><input type="radio" name="q5" value="3"><span>Almost always</span></label>
+        </div></div>
+        <div class="q"><h3>6) I shrink parts of myself to keep peace.</h3><div class="options">
+          <label class="choice"><input type="radio" name="q6" value="0"><span>Never</span></label><label class="choice"><input type="radio" name="q6" value="1"><span>Sometimes</span></label><label class="choice"><input type="radio" name="q6" value="2"><span>Often</span></label><label class="choice"><input type="radio" name="q6" value="3"><span>Almost always</span></label>
+        </div></div>
+        <div class="q"><h3>7) I ignore my own needs until I feel resentful or drained.</h3><div class="options">
+          <label class="choice"><input type="radio" name="q7" value="0"><span>Never</span></label><label class="choice"><input type="radio" name="q7" value="1"><span>Sometimes</span></label><label class="choice"><input type="radio" name="q7" value="2"><span>Often</span></label><label class="choice"><input type="radio" name="q7" value="3"><span>Almost always</span></label>
+        </div></div>
+        <div class="q"><h3>8) I feel guilty choosing myself.</h3><div class="options">
+          <label class="choice"><input type="radio" name="q8" value="0"><span>Never</span></label><label class="choice"><input type="radio" name="q8" value="1"><span>Sometimes</span></label><label class="choice"><input type="radio" name="q8" value="2"><span>Often</span></label><label class="choice"><input type="radio" name="q8" value="3"><span>Almost always</span></label>
+        </div></div>
+
+        <div class="q"><h3>9) My inner voice is harsher than I would ever be to someone else.</h3><div class="options">
+          <label class="choice"><input type="radio" name="q9" value="0"><span>Never</span></label><label class="choice"><input type="radio" name="q9" value="1"><span>Sometimes</span></label><label class="choice"><input type="radio" name="q9" value="2"><span>Often</span></label><label class="choice"><input type="radio" name="q9" value="3"><span>Almost always</span></label>
+        </div></div>
+        <div class="q"><h3>10) I feel like I’m never doing enough.</h3><div class="options">
+          <label class="choice"><input type="radio" name="q10" value="0"><span>Never</span></label><label class="choice"><input type="radio" name="q10" value="1"><span>Sometimes</span></label><label class="choice"><input type="radio" name="q10" value="2"><span>Often</span></label><label class="choice"><input type="radio" name="q10" value="3"><span>Almost always</span></label>
+        </div></div>
+        <div class="q"><h3>11) I struggle to believe good things about myself.</h3><div class="options">
+          <label class="choice"><input type="radio" name="q11" value="0"><span>Never</span></label><label class="choice"><input type="radio" name="q11" value="1"><span>Sometimes</span></label><label class="choice"><input type="radio" name="q11" value="2"><span>Often</span></label><label class="choice"><input type="radio" name="q11" value="3"><span>Almost always</span></label>
+        </div></div>
+        <div class="q"><h3>12) Compliments feel hard to receive or trust.</h3><div class="options">
+          <label class="choice"><input type="radio" name="q12" value="0"><span>Never</span></label><label class="choice"><input type="radio" name="q12" value="1"><span>Sometimes</span></label><label class="choice"><input type="radio" name="q12" value="2"><span>Often</span></label><label class="choice"><input type="radio" name="q12" value="3"><span>Almost always</span></label>
+        </div></div>
+
+        <div class="divider"></div>
+        <div class="row">
+          <button class="btn" type="button" id="calc">Get my result</button>
+          <button class="btn secondary" type="button" id="reset">Reset</button>
+          <span class="tiny" id="hint">Answer all 12 to unlock your result.</span>
+        </div>
+        <div id="result" class="result hidden" aria-live="polite"></div>
+        <div class="footer"><p><b>Note:</b> This tool is for reflection, not diagnosis. If you feel unsafe or in immediate danger, please seek support from local emergency services or a licensed professional.</p></div>
+      </form>
+
+      <div id="optin" class="result hidden">
+        <h2>Want gentle next steps based on your result?</h2>
+        <p>Get the <strong>7 Days of Seeing Yourself</strong> reset plan — simple, calming, and made for tender hearts.</p>
+
+        <div class="optin-form" id="optinFormWrap">
+          <h3>Start your 7-day reset</h3>
+          <p>For when you feel like you’re not enough… but you’re ready to come back to yourself.</p>
+
+          <form action="PASTE_YOUR_SELF_WORTH_MAILERLITE_SUBSCRIBE_URL_HERE" method="post" target="ml-hidden-frame" onsubmit="showOptinSuccess()">
+            <input type="email" name="fields[email]" placeholder="Your email (where I’ll send it)" autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="email" required />
+            <input type="hidden" name="ml-submit" value="1" />
+            <input type="hidden" name="anticsrf" value="true" />
+            <button type="submit">Send me the reset</button>
+          </form>
+        </div>
+
+        <div id="optinSuccess" class="optin-form hidden">
+          <h3>You’re in.</h3>
+          <p>Please check your inbox for your reset. If you don’t see it in a few minutes, check spam or promotions.</p>
+        </div>
+        <iframe name="ml-hidden-frame" style="display:none;"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const quiz = document.getElementById('quiz');
+    const answeredEl = document.getElementById('answered');
+    const bar = document.getElementById('bar');
+    const hint = document.getElementById('hint');
+    const resultBox = document.getElementById('result');
+    const optinBox = document.getElementById('optin');
+
+    function countAnswered() {
+      let count = 0;
+      for (let i = 1; i <= 12; i++) if (quiz.querySelector(`input[name="q${i}"]:checked`)) count++;
+      answeredEl.textContent = count;
+      bar.style.width = `${(count / 12) * 100}%`;
+      hint.textContent = count === 12 ? 'Ready. Click "Get my result."' : 'Answer all 12 to unlock your result.';
+      return count;
+    }
+    quiz.addEventListener('change', countAnswered);
+    countAnswered();
+
+    function getVal(name) { const el = quiz.querySelector(`input[name="${name}"]:checked`); return el ? parseInt(el.value, 10) : null; }
+    function sumRange(start, end) { let s = 0; for (let i = start; i <= end; i++) s += getVal(`q${i}`); return s; }
+
+    function renderResult(title, toneLine, bullets, nextSteps) {
+      resultBox.innerHTML = `
+        <p class="tiny"><strong>Here’s what your self-worth may be asking you to notice:</strong></p>
+        <h2>${title}</h2>
+        <p>${toneLine}</p>
+        <div class="divider"></div>
+        <p><b>What this can mean:</b></p>
+        <ul class="bullets">${bullets.map(b => `<li>${b}</li>`).join('')}</ul>
+        <p style="margin-top:12px;"><b>Try this in the next 24 hours:</b></p>
+        <ul class="bullets">${nextSteps.map(s => `<li>${s}</li>`).join('')}</ul>`;
+      resultBox.classList.remove('hidden');
+      optinBox.classList.remove('hidden');
+      resultBox.scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+
+    document.getElementById('calc').addEventListener('click', () => {
+      if (countAnswered() !== 12) return;
+      const A = sumRange(1,4), B = sumRange(5,8), C = sumRange(9,12);
+      const scores = [{k:'A',v:A},{k:'B',v:B},{k:'C',v:C}].sort((x,y)=>y.v-x.v);
+      const top = scores[0], second = scores[1];
+      const isMixed = (top.v - second.v) <= 2 && top.v >= 6 && second.v >= 6;
+
+      if (isMixed) return renderResult('Mixed Pattern: You’ve Been Carrying Too Much', 'Your answers suggest your self-worth may be strained in more than one place. This is not failure — it is information. A tender signal asking for care.', ['You may be craving approval while also abandoning your needs.', 'Your inner critic may get louder when you feel unseen.', 'You may be confusing being needed with being safe.'], ['Pause before one automatic yes today.', 'Write: “I am allowed to matter here.”', 'Choose one small act of care without explaining it.']);
+      if (top.k === 'A') return renderResult('Approval-Seeking Pattern', 'Your answers lean toward seeking safety through approval. You may feel most secure when others are pleased with you — but your worth cannot live in someone else’s reaction.', ['You may over-explain to avoid rejection.', 'You may feel anxious when someone is disappointed.', 'You may confuse acceptance with approval.'], ['Let one person misunderstand you without over-explaining.', 'Say: “I can be worthy and still disappoint someone.”', 'Write down one choice you would make if approval was not required.']);
+      if (top.k === 'B') return renderResult('Self-Abandonment Pattern', 'Your answers lean toward leaving yourself behind to keep peace, keep love, or avoid conflict. But peace that requires your disappearance is not true peace.', ['You may say yes while quietly resenting it.', 'You may treat your needs as interruptions.', 'You may be exhausted from shrinking yourself.'], ['Say no to one small thing today.', 'Ask yourself: “What do I actually need right now?”', 'Do one thing for yourself before you do one thing for everyone else.']);
+      return renderResult('Inner Critic Pattern', 'Your answers lean toward an inner voice that asks you to earn what was always yours. You do not have to bully yourself into becoming worthy.', ['You may judge yourself more harshly than anyone else.', 'You may struggle to receive kindness.', 'You may feel like enough is always one achievement away.'], ['Speak to yourself once like someone you love.', 'Write: “I do not have to become perfect to be kind to myself.”', 'Let one compliment land without rejecting it.']);
+    });
+
+    document.getElementById('reset').addEventListener('click', () => {
+      quiz.reset(); resultBox.classList.add('hidden'); optinBox.classList.add('hidden');
+      const formWrap = document.getElementById('optinFormWrap');
+      const successWrap = document.getElementById('optinSuccess');
+      if (formWrap && successWrap) { formWrap.classList.remove('hidden'); successWrap.classList.add('hidden'); }
+      countAnswered(); window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    function showOptinSuccess() {
+      setTimeout(() => {
+        const formWrap = document.getElementById('optinFormWrap');
+        const successWrap = document.getElementById('optinSuccess');
+        if (formWrap && successWrap) { formWrap.classList.add('hidden'); successWrap.classList.remove('hidden'); }
+      }, 500);
+    }
+  </script>
+</body>
+</html>
