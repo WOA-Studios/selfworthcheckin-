@@ -38,13 +38,55 @@
     .progress { height:10px; background:rgba(255,255,255,.08); border-radius:999px; overflow:hidden; border:1px solid var(--line); }
     .bar { height:100%; width:0%; background:#fff; transition:width .2s ease; }
     .footer { margin-top:18px; font-size:13px; color:var(--muted); }
-    .optin-form { margin-top:20px; background:#f6f6f6; border-radius:8px; padding:24px; max-width:520px; margin-left:auto; margin-right:auto; }
-    .optin-form h3 { margin:0 0 10px; font-size:28px; font-weight:400; color:#000; }
-    .optin-form p { color:#000; margin:0 0 16px; }
-    .optin-form input[type="email"] { width:100%; padding:12px; border-radius:4px; border:1px solid #ccc; font-size:16px; margin-bottom:12px; }
-    .optin-form button { width:100%; padding:12px; background:#000; color:#fff; border:none; border-radius:4px; font-weight:700; cursor:pointer; font-size:16px; }
-    .optin-form button:hover { background:#333; }
-    @media (max-width:680px) { .options { grid-template-columns:1fr 1fr; } .optin-form { padding:18px; } .optin-form h3 { font-size:22px; } }
+
+    /* MailerLite Embedded Form Styling */
+    .ml-embedded {
+      margin-top: 24px;
+    }
+
+    .ml-embedded h1,
+    .ml-embedded h2,
+    .ml-embedded h3,
+    .ml-embedded p,
+    .ml-embedded label,
+    .ml-embedded span,
+    .ml-embedded div {
+      font-size: 18px !important;
+      line-height: 1.6 !important;
+    }
+
+    .ml-embedded input[type="email"] {
+      width: 100% !important;
+      padding: 16px !important;
+      border-radius: 8px !important;
+      border: 1px solid #ccc !important;
+      font-size: 18px !important;
+      margin-bottom: 14px !important;
+    }
+
+    .ml-embedded button,
+    .ml-embedded input[type="submit"] {
+      width: 100% !important;
+      padding: 16px !important;
+      background: #000 !important;
+      color: #fff !important;
+      border: none !important;
+      border-radius: 8px !important;
+      font-size: 18px !important;
+      font-weight: 700 !important;
+      cursor: pointer !important;
+    }
+
+    .ml-embedded button:hover,
+    .ml-embedded input[type="submit"]:hover {
+      background:#333 !important;
+    }
+
+    @media (max-width:680px) {
+      .options { grid-template-columns:1fr 1fr; }
+      .wrap { padding:16px; }
+      .card { padding:18px; }
+    }
   </style>
 </head>
 <body>
@@ -116,24 +158,7 @@
       <div id="optin" class="result hidden">
         <h2>Want gentle next steps based on your result?</h2>
         <p>Get the <strong>7 Days of Seeing Yourself</strong> reset plan — simple, calming, and made for tender hearts.</p>
-
-        <div class="optin-form" id="optinFormWrap">
-          <h3>Start your 7-day reset</h3>
-          <p>For when you feel like you’re not enough… but you’re ready to come back to yourself.</p>
-
-          <form action="PASTE_YOUR_SELF_WORTH_MAILERLITE_SUBSCRIBE_URL_HERE" method="post" target="ml-hidden-frame" onsubmit="showOptinSuccess()">
-            <input type="email" name="fields[email]" placeholder="Your email (where I’ll send it)" autocomplete="email" autocapitalize="off" autocorrect="off" spellcheck="false" inputmode="email" required />
-            <input type="hidden" name="ml-submit" value="1" />
-            <input type="hidden" name="anticsrf" value="true" />
-            <button type="submit">Send me the reset</button>
-          </form>
-        </div>
-
-        <div id="optinSuccess" class="optin-form hidden">
-          <h3>You’re in.</h3>
-          <p>Please check your inbox for your reset. If you don’t see it in a few minutes, check spam or promotions.</p>
-        </div>
-        <iframe name="ml-hidden-frame" style="display:none;"></iframe>
+        <div class="ml-embedded" data-form="4suSb3"></div>
       </div>
     </div>
   </div>
@@ -189,20 +214,22 @@
     });
 
     document.getElementById('reset').addEventListener('click', () => {
-      quiz.reset(); resultBox.classList.add('hidden'); optinBox.classList.add('hidden');
-      const formWrap = document.getElementById('optinFormWrap');
-      const successWrap = document.getElementById('optinSuccess');
-      if (formWrap && successWrap) { formWrap.classList.remove('hidden'); successWrap.classList.add('hidden'); }
-      countAnswered(); window.scrollTo({top:0, behavior:'smooth'});
+      quiz.reset();
+      resultBox.classList.add('hidden');
+      optinBox.classList.add('hidden');
+      countAnswered();
+      window.scrollTo({top:0, behavior:'smooth'});
     });
-
-    function showOptinSuccess() {
-      setTimeout(() => {
-        const formWrap = document.getElementById('optinFormWrap');
-        const successWrap = document.getElementById('optinSuccess');
-        if (formWrap && successWrap) { formWrap.classList.add('hidden'); successWrap.classList.remove('hidden'); }
-      }, 500);
-    }
   </script>
+
+  <!-- MailerLite Universal -->
+  <script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '1527840');
+  </script>
+  <!-- End MailerLite Universal -->
 </body>
 </html>
